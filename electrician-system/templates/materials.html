@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Materials</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>ECMS</h2>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/electricians">Electricians</a>
+    <a href="/jobs">Jobs</a>
+    <a href="/tasks">Tasks</a>
+    <a href="/materials">Materials</a>
+    <a href="/profile">Profile</a>
+</div>
+
+<div class="main">
+    <h2>Materials Management</h2>
+
+    <!-- ADD MATERIAL FORM -->
+    <h3>Add Material</h3>
+
+    <form method="POST">
+        <input type="text" name="name" placeholder="Material Name" required>
+        <input type="number" name="quantity" placeholder="Quantity" required>
+        <input type="text" name="usage" placeholder="Usage" required>
+
+        <button type="submit">Add Material</button>
+    </form>
+
+    <!-- MATERIAL TABLE -->
+    <h3>Material List</h3>
+
+    <table border="1">
+        <tr>
+            <th>Material Name</th>
+            <th>Quantity</th>
+            <th>Usage</th>
+        </tr>
+        <form method="POST">
+    <input type="text" name="name" placeholder="Material Name" required>
+    <input type="number" name="quantity" placeholder="Quantity" required>
+    <button type="submit">Add Material</button>
+</form>
+
+        {% for m in data %}
+        <tr>
+            <td>{{ m[1] }}</td>
+            <td>{{ m[2] }}</td>
+            <td>{{ m[3] }}</td>
+        </tr>
+        {% endfor %}
+        
+
+    </table>
+</div>
+
+</body>
+</html>
