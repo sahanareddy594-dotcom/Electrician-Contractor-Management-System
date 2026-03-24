@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jobs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>ECMS</h2>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/jobs">Jobs</a>
+</div>
+
+<div class="main">
+    <h2>Jobs</h2>
+
+    <!-- ✅ FORM -->
+    <form method="POST">
+        <input type="text" name="title" placeholder="Job Title" required>
+        <input type="text" name="location" placeholder="Location" required>
+
+        <select name="status">
+            <option>Pending</option>
+            <option>Completed</option>
+        </select>
+
+        <button type="submit">Add Job</button>
+    </form>
+
+    <!-- ✅ TABLE -->
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Location</th>
+            <th>Status</th>
+        </tr>
+
+        {% for j in data %}
+        <tr>
+            <td>{{ j['title'] }}</td>
+            <td>{{ j['location'] }}</td>
+            <td>{{ j['status'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Electricians</title>
+</head>
+<body>
+
+<h2>Electricians List</h2>
+<form method="POST">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="text" name="phone" placeholder="Phone" required>
+    <input type="text" name="experience" placeholder="Experience" required>
+    <button type="submit">Add Electrician</button>
+</form>
+
+{% for e in data %}
+    <p>{{ e[1] }} - {{ e[2] }}</p>
+{% endfor %}
+
+<a href="/dashboard">Back to Dashboard</a>
+
+</body>
+</html>
