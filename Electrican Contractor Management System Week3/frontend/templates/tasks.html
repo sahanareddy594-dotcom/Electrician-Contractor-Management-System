@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tasks</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>ECMS</h2>
+    <a href="/">Dashboard</a>
+    <a href="/jobs">Jobs</a>
+    <a href="/electricians">Electricians</a>
+    <a href="/tasks">Tasks</a>
+    <a href="/materials">Materials</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+    <h2>Tasks</h2>
+
+    <!-- FORM -->
+    <form method="POST">
+
+        <input type="text" name="name" placeholder="Task Name" required>
+
+        <!-- JOB DROPDOWN -->
+        <select name="job" required>
+            <option value="">Select Job</option>
+            {% for j in jobs %}
+                <option value="{{ j.id }}">{{ j.title }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- ELECTRICIAN DROPDOWN -->
+        <select name="electrician" required>
+            <option value="">Select Electrician</option>
+            {% for e in electricians %}
+                <option value="{{ e.id }}">{{ e.name }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- STATUS -->
+        <select name="status">
+            <option>Pending</option>
+            <option>In Progress</option>
+            <option>Completed</option>
+        </select>
+
+        <button type="submit">Add Task</button>
+    </form>
+
+    <!-- TABLE -->
+    <table>
+        <tr>
+            <th>Task</th>
+            <th>Job</th>
+            <th>Electrician</th>
+            <th>Status</th>
+        </tr>
+
+        {% for t in data %}
+        <tr>
+            <td>{{ t.name }}</td>
+            <td>{{ t.jobname }}</td>
+            <td>{{ t.ename }}</td>
+            <td>{{ t.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+</body>
+</html>
